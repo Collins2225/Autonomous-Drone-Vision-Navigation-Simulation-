@@ -266,7 +266,7 @@ class PotentialFieldNavigator:
             vx = CRUISE_SPEED * proximity_factor
 
         # ── Lateral velocity: proportional to lateral APF force ──
-        vy = np.clip(lateral_force * 1.5, -MAX_VY, MAX_VY)
+        vy = np.clip(lateral_force * 3.0, -MAX_VY, MAX_VY)
 
         # ── Vertical velocity: use vertical force for altitude adjustment ──
         # Negative vertical force (obstacle below) → climb (negative vz in NED)

@@ -76,7 +76,7 @@ Real-time robotics requires careful timing. Our loop:
 We target 10 Hz (100ms/cycle). Faster = more responsive but more CPU.
 Slower = laggy but cheaper. 10Hz is a good research starting point.
 
-### 🧠 Concept 4: AirSim Coordinate System
+###  Concept 4: AirSim Coordinate System
 AirSim uses NED (North-East-Down):
 - X = forward (North)
 - Y = right (East)

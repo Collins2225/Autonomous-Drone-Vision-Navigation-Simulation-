@@ -241,11 +241,9 @@ def main():
             break
 
         if cmd.goal_reached:
-            print("[Main] [GOAL] Goal reached — exiting loop.")
-            
-            if navigator.goal_image[0] == 0.0 and navigator.goal_image[1] == 0.0:
-                navigator.set_goal(0.0, 0.0, 50.0)
-            time.sleep(3)    
+            print("[Main] [GOAL] Waypoint reached — continuing patrol.")
+            navigator.set_goal(0.0, 0.0, 50.0)  # reset goal straight ahead
+              
 
         # ────────────────────────────────────────
         # STEP 4: VISUALIZE (if debug mode)
