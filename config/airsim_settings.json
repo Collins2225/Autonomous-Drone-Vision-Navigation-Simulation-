@@ -1,0 +1,71 @@
+{
+  "_comment": "AirSim settings for autonomous drone navigation. Place this in ~/Documents/AirSim/settings.json",
+  "SettingsVersion": 1.2,
+  "SimMode": "Multirotor",
+  "ClockSpeed": 1,
+
+  "Vehicles": {
+    "Drone1": {
+      "VehicleType": "SimpleFlight",
+      "AutoCreate": true,
+      "PawnPath": "",
+      "EnableCollisionPassthrough": false,
+      "EnableTrace": false,
+      "AllowAPIAlways": true,
+      "RC": {
+        "RemoteControlID": 0,
+        "AllowAPIWhenDisconnected": true
+      },
+
+      "Cameras": {
+        "front_rgb": {
+          "CaptureSettings": [
+            {
+              "ImageType": 0,
+              "Width": 320,
+              "Height": 240,
+              "FOV_Degrees": 90,
+              "AutoExposureSpeed": 100,
+              "MotionBlurAmount": 0
+            }
+          ],
+          "X": 0.50, "Y": 0.00, "Z": -0.10,
+          "Pitch": 0.0, "Roll": 0.0, "Yaw": 0.0
+        },
+
+        "front_depth": {
+          "CaptureSettings": [
+            {
+              "ImageType": 2,
+              "_comment": "ImageType 2 = DepthPlanar",
+              "Width": 320,
+              "Height": 240,
+              "FOV_Degrees": 90
+            }
+          ],
+          "X": 0.50, "Y": 0.00, "Z": -0.10,
+          "Pitch": 0.0, "Roll": 0.0, "Yaw": 0.0
+        },
+
+        "down_rgb": {
+          "_comment": "Downward camera for landing and altitude estimation",
+          "CaptureSettings": [
+            {
+              "ImageType": 0,
+              "Width": 320,
+              "Height": 240,
+              "FOV_Degrees": 90
+            }
+          ],
+          "X": 0.00, "Y": 0.00, "Z": -0.05,
+          "Pitch": -90.0, "Roll": 0.0, "Yaw": 0.0
+        }
+      }
+    }
+  },
+
+  "SubWindows": [
+    {"WindowID": 0, "CameraName": "front_rgb",   "ImageType": 0, "VehicleName": "Drone1", "Visible": true},
+    {"WindowID": 1, "CameraName": "front_depth",  "ImageType": 2, "VehicleName": "Drone1", "Visible": true}
+  ]
+}
