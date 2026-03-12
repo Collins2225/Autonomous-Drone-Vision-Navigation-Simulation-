@@ -46,7 +46,7 @@ MotionVector  → [Control]    → AirSim Commands
 
 ## 2. Core Concepts Explained
 
-### 🧠 Concept 1: Optical Flow vs Depth-Based Obstacle Detection
+###  Concept 1: Optical Flow vs Depth-Based Obstacle Detection
 We use **depth image** from AirSim's stereo camera. A depth image encodes
 distance-to-surface per pixel. Nearby obstacles appear bright (or dark,
 depending on encoding). We threshold this image to extract a danger mask.
@@ -54,7 +54,7 @@ depending on encoding). We threshold this image to extract a danger mask.
 Why not RGB only? Because colour tells you "what" is there, not "how far".
 Depth tells you "how far" directly — perfect for reactive avoidance.
 
-### 🧠 Concept 2: Potential Field Navigation
+###  Concept 2: Potential Field Navigation
 Imagine the drone as a ball on a landscape:
 - The **goal** is a valley (attractive force pulls you in)
 - Each **obstacle** is a hill (repulsive force pushes you away)
@@ -66,7 +66,7 @@ Khatib (1986) and still used in research today because it's fast and elegant.
 **Known limitation:** APF can get stuck in local minima (a valley surrounded
 by hills with no path out). We handle this with a random perturbation escape.
 
-### 🧠 Concept 3: Control Loop Timing
+###  Concept 3: Control Loop Timing
 Real-time robotics requires careful timing. Our loop:
 1. Capture image (I/O bound, ~50ms in AirSim)
 2. Process image (CPU bound, ~10-30ms with OpenCV)
@@ -152,7 +152,7 @@ python main.py --mock
 
 ## 6. Research-Level Extensions
 
-### 🔬 Extension A: SLAM (Simultaneous Localization and Mapping)
+###  Extension A: SLAM (Simultaneous Localization and Mapping)
 Current system is purely reactive — it has no memory of where it's been.
 SLAM builds a map while tracking position. Use **ORB-SLAM3** or **RTAB-Map**.
 AirSim provides ground-truth pose for evaluation.
@@ -160,7 +160,7 @@ AirSim provides ground-truth pose for evaluation.
 Read: Mur-Artal et al., "ORB-SLAM3" (2021), IEEE T-RO
 ```
 
-### 🔬 Extension B: Deep Reinforcement Learning
+###  Extension B: Deep Reinforcement Learning
 Replace the APF navigation with a neural network trained via RL.
 The agent learns to fly by trial-and-error in simulation.
 Use **PPO** (Proximal Policy Optimization) with AirSim as the environment.
@@ -168,7 +168,7 @@ Use **PPO** (Proximal Policy Optimization) with AirSim as the environment.
 Read: Loquercio et al., "Learning High-Speed Flight" (2021), Science Robotics
 ```
 
-### 🔬 Extension C: Monocular Depth Estimation
+###  Extension C: Monocular Depth Estimation
 No depth camera? Estimate depth from a single RGB image using:
 - **MiDaS** (Intel) — pretrained, fast, runs on CPU
 - **DPT** (Dense Prediction Transformer) — more accurate
@@ -178,7 +178,7 @@ pip install timm
 # See: https://github.com/isl-org/MiDaS
 ```
 
-### 🔬 Extension D: YOLO Object Detection
+###  Extension D: YOLO Object Detection
 Detect specific obstacle *types* (people, cars, trees) and apply
 different avoidance behaviors per class. Use YOLOv8:
 ```python
@@ -187,7 +187,7 @@ model = YOLO('yolov8n.pt')
 results = model(frame)
 ```
 
-### 🔬 Extension E: Path Planning (Global)
+###  Extension E: Path Planning (Global)
 APF = local/reactive. For long-range navigation, combine with:
 - **A*** or **RRT*** for global path planning
 - Use the AirSim voxel map or a pre-built occupancy grid
