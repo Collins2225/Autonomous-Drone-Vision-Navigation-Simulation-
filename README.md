@@ -1,4 +1,4 @@
-# 🚁 Autonomous Drone Vision Navigation System
+#  Autonomous Drone Vision Navigation System
 ### A Research-Level Tutorial — Mentored by a Senior Robotics Engineer
 
 ---
